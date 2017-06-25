@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-state="no-code absolute">
+					<img class="logo" src="image/ui5con.png"></img>
+					<span class="title">
+						<span class="highlight1">Time</span> or <span class="highlight1">Money</span>?
+						<span class="highlight1">Time</span> (<span class="highlight">DateFormat</span>) and <span class="highlight1">Money</span> (<span class="highlight">NumberFormat</span>)!
+					</span>
+					<span class="name">
+						Jiawei Cao, SAP SE<br>
+						Malte Wedel, SAP SE<br>
+						<span class="date" id="date">
+							June 30, 2017
+						</span>
+					</span>
+
+				</section>
+				<section>
+					<h2>sap.ui.core.format.DateFormat</h2>
+					<p class="fragment">DateFormat formats and parses dates and times in JavaScript across 71 Locales</p>
+					<p class="fragment">Pattern with date field symbol () is needed</p>
+					<p class="fragment">Pattern can be provided in different ways</p>
+				</section>
+				<section>
+					<h2>How to define a pattern?</h2>
+					<section data-example-url-param="formatOptions={pattern:'EEE, d MMM yyyy HH:mm:ss Z'}&date=1490267100000">
+						<h3>pattern</h3>
+						<p>EEE, d MMM yyyy HH:mm:ss Z</p>
+					</section>
+					<section>
+						<h3>style</h3>
+						<p>medium</p>
+					</section>
+					<section>
+						<h3>format</h3>
+						<p>yMMM</p>
+					</section>
+				</section>
+				<section id="relative">
+					<h2>Relative</h2>
+					<h3 id="relative_en"></h3>
+					<h3 id="relative_de"></h3>
+					<h3 id="relative_cn"></h3>
+				</section>
+				<section id="interval">
+					<h2>Interval</h2>
+					<h3 id="interval_one_year"></h3>
+					<h3 id="interval_one_month"></h3>
+				</section>
+				<section>
+					<h2>sap.ui.core.format.NumberFormat</h2>
+				</section>
+				<section>
+					<h3>Precision, Number of decimal and Rounding</h3>
+				</section>
+				<section>
+					<h3>Compact format</h3>
+					<section>Automatic Scale</section>
+					<section>Provided Scale</section>
+				</section>
+				<section>
+					<h3>Currency</h3>
+				</section>
+			</div>
+		</div>
+		<div id="example_panel" class="example_panel">
+			<span id="openArrow" class="arrow"></span>
+			<iframe id="example" width="800px" height="100%" src="http://veui5infra.dhcp.wdf.sap.corp:8080/uilib-sample/test-resources/sap/ui/core/DateFormat.html"></iframe>
+		</div>
+		<script src="js/reveal.js"></script>
+		<script>
+			Reveal.initialize();
+
+			Reveal.addEventListener("slidechanged", function(oEvent) {
+				var sBaseURL = "http://veui5infra.dhcp.wdf.sap.corp:8080/uilib-sample/test-resources/sap/ui/core/DateFormat.html";
+				var sURLParam = oEvent.currentSlide.getAttribute("data-example-url-param");
+				if (sURLParam) {
+					document.getElementById("example").setAttribute("src", sBaseURL + "#" + sURLParam);
+				}
+			});
+
+			Reveal.addEventListener("slidechanged", function(oEvent) {
+				if (oEvent.currentSlide.id === "relative") {
+					var oNow = new Date();
+					sap.ui.require(["sap/ui/core/format/DateFormat", "sap/ui/core/Locale"], function(Format, Locale) {
+						window.relativeInterval = setInterval(function() {
+							var oEn = new Locale("en_US");
+							var oFormatEn = Format.getTimeInstance({
+								relative: true
+							}, oEn);
+							var sRelativeEn = oFormatEn.format(oNow);
+							document.getElementById("relative_en").innerHTML = sRelativeEn;
+
+							var oDe = new Locale("de_DE");
+							var oFormatDe = Format.getTimeInstance({
+								relative: true
+							}, oDe);
+							var sRelativeDe = oFormatDe.format(oNow);
+							document.getElementById("relative_de").innerHTML = sRelativeDe;
+
+							var oZh = new Locale("zh_CN");
+							var oFormatZh = Format.getTimeInstance({
+								relative: true
+							}, oZh);
+							var sRelativeZh = oFormatZh.format(oNow);
+							document.getElementById("relative_cn").innerHTML = sRelativeZh;
+						}, 1000);
+					});
+				} else {
+					clearInterval(window.relativeInterval);
+				}
+			});
+
+			Reveal.addEventListener("slidechanged", function(oEvent) {
+				if (oEvent.currentSlide.id === "interval") {
+					var oNow = new Date();
+					sap.ui.require(["sap/ui/core/format/DateFormat"], function(Format) {
+						var oFormat = Format.getInstance({
+							interval: true,
+							format: "yMMMd"
+						});
+
+						var oOneMonthAgo = new Date(oNow.getTime() - 30 * 24 * 60 * 60 * 1000);
+						var sFormat = oFormat.format([oOneMonthAgo, oNow]);
+						document.getElementById("interval_one_month").innerHTML = sFormat;
+
+						var oOneYearAgo = new Date(oNow.getTime() - 365 * 24 * 60 * 60 * 1000);
+						sFormat = oFormat.format([oOneYearAgo, oNow]);
+						document.getElementById("interval_one_year").innerHTML = sFormat;
+					});
+				}
+			});
+		</script>
+		<script>
+			document.getElementById("openArrow").addEventListener("click", function(oEvent) {
+				var oExamplePanel = document.getElementById("example_panel");
+				if (oExamplePanel.classList.contains("open")) {
+					oExamplePanel.classList.remove("open");
+				} else {
+					oExamplePanel.classList.add("open");
+				}
+			});
+		</script>
+		<script src="http://veui5infra.dhcp.wdf.sap.corp:8080/sapui5/resources/sap-ui-core.js" id="sap-ui-bootstrap"></script>
+
+	</body>
+</html>
