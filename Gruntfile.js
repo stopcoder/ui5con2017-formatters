@@ -28,6 +28,17 @@ module.exports = function(grunt) {
 						cwd: 'src/image/',
 						src: '*',
 						dest: 'dist/image/'
+					}, {
+						src: 'node_modules/reveal.js/plugin/highlight/highlight.js',
+						dest: "dist/plugin/highlight/highlight.js"
+					}, {
+						expand: true,
+						cwd: 'src/js/',
+						src: '*',
+						dest: 'dist/js/'
+					}, {
+						src: "node_modules/highlight.js/styles/atom-one-dark.css",
+						dest: "dist/css/atom-one-dark.css"
 					}
 				]
 			}

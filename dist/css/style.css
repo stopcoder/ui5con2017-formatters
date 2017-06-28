@@ -7,11 +7,6 @@ body {
     overflow: visible;
 }
 
-/*.reveal section {
-    overflow: hidden;
-    height: 700px;
-}*/
-
 
 .reveal section img.logo {
 	background: none;
@@ -61,7 +56,7 @@ span.arrow {
 }
 
 html.no-code div.example_panel {
-    visibility: hidden;
+    display: none;
 }
 
 div.example_panel {
@@ -82,6 +77,14 @@ div.example_panel iframe {
     border: none;
 }
 
+table th {
+    color: #999999;
+}
+
+table tbody tr td:first-child {
+    color: #bbbbbb;
+}
+
 /*should be moved to a theme*/
 
 .reveal h2 {
@@ -99,6 +102,10 @@ div.example_panel iframe {
     text-transform: none;
 }
 
+.reveal table {
+    margin: 0;
+}
+
 /* center content hack*/
 
 .reveal.slide .slides > section, .reveal.slide .slides > section > section {
@@ -110,6 +117,7 @@ div.example_panel iframe {
   top: 0 !important;
   align-items: center !important;
 }
+/*
 section > h1, section > h2 {
   position: absolute !important;
   top: 0 !important;
@@ -119,7 +127,66 @@ section > h1, section > h2 {
   right: 0 !important;
   text-align: center !important;
 }
+*/
 .print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
   min-height: 770px !important;
   position: relative !important;
+}
+
+
+
+
+/* special css for each page*/
+.reveal section h2, .reveal section h3 {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.reveal section h2 {
+    font-size: 1.3em;
+}
+
+.reveal section table {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.reveal section p {
+     font-family: 'Oxygen', sans-serif;
+}
+
+.reveal section pre {
+    margin: 20px 0;
+    width: 100%;
+}
+
+code.hljs {
+    font-size: 0.8em;
+    font-family: 'Oxygen', sans-serif;
+    background: none;
+}
+
+html.split-view section {
+    font-family: 'Oxygen', sans-serif;
+}
+
+html.split-view section > div {
+    width: 100%;
+}
+
+html.split-view section p b {
+    font-size: 0.8em;
+}
+
+html.list-slide .reveal.slide .slides > section {
+    align-items: flex-start !important;
+}
+
+html.list-slide section h2 {
+    text-align: left;
+}
+
+html.list-slide section p{
+    text-align: left;
+    font-size: 0.7em;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
 }
