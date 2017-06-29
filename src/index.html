@@ -25,8 +25,8 @@
 						</span>
 					</span>
 				</section>
-				<section id="intro" data-state="no-code list-slide">
-					<h2>core.format.DateFormat,</h2>
+				<section id="intro" data-state="no-code list-slide half-opacity" data-background-image="image/time.jpg">
+					<h2>sap.ui.core.format.DateFormat,</h2>
 					<p class="fragment">formats and parses dates and times in JavaScript across 71 locales.</p>
 					<p></p>
 					<p class="fragment">formats date with a given pattern with date field symbol(s).</p>
@@ -35,9 +35,7 @@
 				<section id="date_instance_title" data-state="no-code">
 					<h2>Create an instance of DateFormat</h2>
 				</section>
-				<section id="date_instance" data-state="no-code split-view">
-					<div style="background-color: rgb(20, 98, 135);width: 100%;height: 400%;position: absolute;top: -100%;left: -59%;z-index: -1;">
-					</div>
+				<section id="date_instance" data-state="no-code split-view date">
 					<div>
 						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 							<p style="text-align: right;">
@@ -90,14 +88,15 @@ var oFormat = DateFormat.getDateTimeInstance({
 						</div>
 					</div>
 				</section>
-				<section id="patterns">
+				<section id="patterns" data-state="no-code">
 					<h2>How to define a pattern?</h2>
+					<p class="fragment" style="font-size: 0.6em">Era (G), Year (y/Y), Quarter (q/Q), Month (M/L), Week (w/W), Day-Of-Week (E/e/c), Day (d/D), Hour (h/H/k/K/), Minute (m), Second (s), Timezone (z/Z/v/V/O/X/x)</p>
 				</section>
-				<section id="pattern" data-example-url-param="formatOptions={pattern:'EEE, d MMM yyyy HH:mm:ss Z'}&date=1490267100000">
+				<section id="pattern" data-example-url-param="formatOptions={pattern:'EEE, d MMM yyyy HH:mm:ss Z'}&date=1498831200000">
 					<h3>pattern</h3>
-					<p>EEE, d MMM yyyy HH:mm:ss Z</p>
+					<p class="fragment">EEE, d MMM yyyy HH:mm:ss Z</p>
 				</section>
-				<section id="style" data-example-url-param="formatOptions={style:'medium'}&date=1490267100000">
+				<section id="style" data-example-url-param="formatOptions={style:'medium'}&date=1498831200000">
 					<h3>style</h3>
 					<table>
 						<thead>
@@ -109,62 +108,115 @@ var oFormat = DateFormat.getDateTimeInstance({
 						<tbody>
 							<tr>
 								<td>short</td>
-								<td id="style_short"></td>
+								<td class="fragment" data-fragment-index="1" id="style_short"></td>
 							</tr>
 							<tr>
 								<td>medium</td>
-								<td id="style_medium"></td>
+								<td class="fragment" data-fragment-index="1" id="style_medium"></td>
 							</tr>
 							<tr>
 								<td>long</td>
-								<td id="style_long"></td>
+								<td class="fragment" data-fragment-index="1" id="style_long"></td>
 							</tr>
 							<tr>
 								<td>full</td>
-								<td id="style_full"></td>
+								<td class="fragment" data-fragment-index="1" id="style_full"></td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
-				<section id="format" data-example-url-param="formatOptions={format:'yMMM'}&date=1490267100000">
+				<section id="format" data-example-url-param="formatOptions={format:'yMMM'}&date=1498831200000">
 					<h3>format</h3>
 					<table>
 						<thead>
 							<tr>
 								<th>Locale</th>
-								<th>yMMM</th>
-								<th>yw</th>
+								<th class="fragment" data-fragment-index="1">yMMM</th>
+								<th class="fragment" data-fragment-index="3">yQQQ</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>en_US</td>
-								<td id="us_ymmm"></td>
-								<td id="us_yw"></td>
+								<td class="fragment" data-fragment-index="2" id="us_ymmm"></td>
+								<td class="fragment" data-fragment-index="4" id="us_yqqq"></td>
 							</tr>
 							<tr>
 								<td>de_DE</td>
-								<td id="de_ymmm"></td>
-								<td id="de_yw"></td>
+								<td class="fragment" data-fragment-index="2" id="de_ymmm"></td>
+								<td class="fragment" data-fragment-index="4" id="de_yqqq"></td>
 							</tr>
 							<tr>
 								<td>zh_CN</td>
-								<td id="cn_ymmm"></td>
-								<td id="cn_yw"></td>
+								<td class="fragment" data-fragment-index="2" id="cn_ymmm"></td>
+								<td class="fragment" data-fragment-index="4" id="cn_yqqq"></td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
-				<section id="relative" data-example-url-param="formatOptions={relative:true}&type=Time&date=1490267100000">
+				<section id="relative" data-example-url-param="formatOptions={relative:true,relativeRange:[-1000,1000]}&date=1490267100000">
 					<h2>Relative</h2>
-					<p id="relative_en"></p>
-					<p id="relative_de"></p>
-					<p id="relative_cn"></p>
+					<table style="width: 600px">
+						<thead>
+							<tr>
+								<th>Locale</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>en_US</td>
+								<td id="relative_en"></td>
+							</tr>
+							<tr>
+								<td>de_DE</td>
+								<td id="relative_de"></td>
+							</tr>
+							<tr>
+								<td>zh_CN</td>
+								<td id="relative_cn"></td>
+							</tr>
+						</tbody>
+					</table>
 				</section>
-				<section id="interval">
+				<section id="interval" data-example-url-param="formatOptions={format:'yMMMd',interval:true}&date=1495978962000&todate=1498657362748">
 					<h2>Interval</h2>
 					<p id="interval_one_year"></p>
 					<p id="interval_one_month"></p>
+				</section>
+				<section id="calendar_type" data-example-url-param="formatOptions={style: 'medium', calendarType: 'Islamic'}&date=1498831200000">
+					<h3>Calendar Types</h3>
+					<table style="font-size:0.8em">
+						<thead>
+							<tr class="fragment" data-fragment-index="1">
+								<th>Calendar Type</th>
+								<th>style: medium</th>
+								<th>style: long</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="fragment" data-fragment-index="1">
+								<td>Gregorian</td>
+								<td id="g_medium"></td>
+								<td id="g_long"></td>
+							</tr>
+							<tr class="fragment" data-fragment-index="2">
+								<td>Islamic</td>
+								<td id="i_medium"></td>
+								<td id="i_long"></td>
+							</tr>
+							<tr class="fragment" data-fragment-index="3">
+								<td>Japanese</td>
+								<td id="j_medium"></td>
+								<td id="j_long"></td>
+							</tr>
+							<tr class="fragment" data-fragment-index="3">
+								<td>Persian</td>
+								<td id="p_medium"></td>
+								<td id="p_long"></td>
+							</tr>
+						</tbody>
+					</table>
 				</section>
 				<section id="parse_date" data-state="no-code list-slide">
 					<h2>Parsing with tolerance,</h2>
@@ -172,8 +224,8 @@ var oFormat = DateFormat.getDateTimeInstance({
 					<p class="fragment">checks through all field variants: e.g. S, Su, Sun, Sunday.</p>
 					<p class="fragment">uses common connector '-' instead of '–' when parsing interval</p>
 				</section>
-				<section id="number_intro" data-state="no-code list-slide">
-					<h2>core.format.NumberFormat,</h2>
+				<section id="number_intro" data-background-image="image/money.jpg" data-state="no-code list-slide low-opacity">
+					<h2>sap.ui.core.format.NumberFormat,</h2>
 					<p class="fragment">formats and parses numbers in JavaScript across 71 locales.</p>
 					<p></p>
 					<p class="fragment">formats number with default options for the current locale.</p>
@@ -182,9 +234,7 @@ var oFormat = DateFormat.getDateTimeInstance({
 				<section id="number_instance_title" data-state="no-code">
 					<h2>Create an instance of DateFormat</h2>
 				</section>
-				<section id="number_instance" data-state="no-code split-view">
-					<div style="background-color: rgb(20, 98, 135);width: 100%;height: 400%;position: absolute;top: -100%;left: -59%;z-index: -1;">
-					</div>
+				<section id="number_instance" data-state="no-code split-view number">
 					<div>
 						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 							<p style="text-align: right;">
@@ -252,14 +302,16 @@ var oFormat = NumberFormat.getCurrencyInstance({
 						</div>
 					</div>
 				</section>
-				<section>
+				<section id="number_patterns" data-example-url-param="formatOptions={pattern:'#,##,##0.###'}&number=123456789.1234" data-example-url="number">
+					<h2>Define a pattern</h2>
+					<p>#,##,##0.###</p>
+				</section>
+				<section data-state="no-code">
 					<h2>precision and decimals</h2>
 				</section>
-				<section id="precision_decimals" data-state="split-view">
-					<div style="background-color: rgb(115, 37, 91);width: 100%;height: 400%;position: absolute;top: -100%;left: -59%;z-index: -1;">
-					</div>
+				<section id="precision_decimals" data-state="split-view number" data-example-url="number" data-example-url-param="formatOptions={precision:3}&number=12.345&type=Float">
 					<div>
-						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 							<p style="text-align: right;margin: 0;">
 							<b style="display: block">precision</b>
 							<b style="display:block;font-weight: normal;font-size: 0.6em">The number of all digits (both integer and decimal).</b>
@@ -287,59 +339,258 @@ var oFormat = NumberFormat.getCurrencyInstance({
 							<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 								<p style="text-align: right;margin: 0;">
 								<b style="display: block">precision</b>
-								<b style="display:block;font-weight: normal;font-size: 0.6em">123456.789 with presicion 8</b>
+								<b style="display:block;font-weight: normal;font-size: 0.6em">precision: 3</b>
 								</p>
 							</div>
 							<div style="width: 55%; display: inline-block;">
-								<p style="font-size: 0.7em;text-align: left;margin: 0;">123,456.79</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">1.2345 → 1.23</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">12.345 → 12.3</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">123.45 → 123</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">1234.5 → 1235</p>
 							</div>
 						</div>
 						<div style="margin-top: 25px;">
 							<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 								<p style="text-align: right;margin: 0;">
 								<b style="display: block">decimals</b>
-								<b style="display:block;font-weight: normal;font-size: 0.6em">123456.789 with decimals 2</b>
+								<b style="display:block;font-weight: normal;font-size: 0.6em">decimals: 2</b>
 								</p>
 							</div>
 							<div style="width: 55%; display: inline-block;">
-								<p style="font-size: 0.7em;text-align: left;margin: 0;">123,456.79</p>
-							</div>
-						</div>
-						<div style="margin-top: 25px;">
-							<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
-								<p style="text-align: right;margin: 0;">
-								<b style="display: block">precision and decimals</b>
-								<b style="display:block;font-weight: normal;font-size: 0.6em">123456.789 with precision 7 and decimals 2</b>
-								</p>
-							</div>
-							<div style="width: 55%; display: inline-block;">
-								<p style="font-size: 0.7em;text-align: left;margin: 0;">123,456.8</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">1.2345 → 1.23</p>
+								<p style="font-size: 0.7em;text-align: left;margin: 0;">123 → 123.00</p>
 							</div>
 						</div>
 					</div>
 				</section>
-				<section>
-					<h2>Compact format</h2>
-					<section>Automatic Scale</section>
-					<section>Provided Scale</section>
+				<section data-state="no-code">
+					<h2 class>Rounding</h2>
 				</section>
-				<section>
+				<section id="rounding" data-state="split-view number" data-example-url="number" data-example-url-param="formatOptions={decimals: 1, roundingMode: 'floor'}&number=123.45&type=Float">
+					<div>
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right; margin-top: 20px;">
+							<b style="display: block">Native JavaScript Rounding</b>
+							<b style="display:block;font-weight: normal;font-size: 0.6em">'toFixed()'</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;font-size: 1.4em;">
+							<pre><code class="hljs" data-trim>
+
+1.005.toFixed(2) // "1.00" why not "1.01" ??
+1.05.toFixed(2) // "1.1"
+1.005 * 100 // 100.49999999999999
+							</code></pre>
+						</div>
+					</div>
+					<div>
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right; margin-top: 20px;">
+							<b class="fragment" style="display: block;font-size: 0.5em;">RoundingMode.TOWARDS_ZERO</b>
+							<b class="fragment" style="display:block;font-weight: normal;font-size: 0.5em">default for Integer instance</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;">
+							<p style="font-size: 0.7em;text-align: left;">123.7 → 123</p>
+						</div>
+					</div>
+					<div>
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right; margin-top: 20px;">
+							<b class="fragment" style="display: block;font-size: 0.5em;">RoundingMode<br>&nbsp;.HALF_AWAY_FROM_ZERO</b>
+							<b class="fragment" style="display:block;font-weight: normal;font-size: 0.5em">default for other instances</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;">
+							<p style="font-size: 0.7em;text-align: left;margin-bottom:0">123.4 → 123</p>
+							<p style="font-size: 0.7em;text-align: left;margin: 0;">123.5 → 124</p>
+							<p style="font-size: 0.7em;text-align: left;margin: 0;">-123.5 → -124</p>
+						</div>
+					</div>
+				</section>
+				<section data-state="no-code">
+					<h2>Compact format</h2>
+					<p class="fragment">
+						1,234,567,890 → 1.2B
+					</p>
+				</section>
+				<section id="compact_scale" data-state="split-view number" data-example-url="number" data-example-url-param="formatOptions={style:'short'}&number=1234567">
+					<div>
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin: 0;">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">set 'style: short' <br> or 'style: long'</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;">
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">short: 1.2M</p>
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">long: 1.2 million</p>
+						</div>
+					</div>
+					<div style="margin-top: 25px;">
+						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin: 0;">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">Scale factor is selected by default automatically</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;">
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">1234567 → 1.2M</p>
+							<p style="font-size: 0.6em;text-align: left;margin: 0">1234567890 → 1.2B</p>
+						</div>
+					</div>
+					<div style="margin-top: 25px;">
+						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin: 0">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">
+								<a onclick="setExampleURL(event)" data-url="http://veui5infra.dhcp.wdf.sap.corp:8080/snippix/snippets/52754.html">Fixed scale factor</a>
+								<a onclick="setExampleURL(event)" data-url="http://veui5infra.dhcp.wdf.sap.corp:8080/snippix/snippets/52754.html?sap-ui-formatLocale=zh_CN" style="font-size: 0.5em;">zh_CN</a>
+							</b>
+							<b style="display:block;font-weight: normal;font-size: 0.6em">use 'shortRefNumber'</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block;">
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">shortRefNumber: 1000000</p>
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">123456 → 0.12M</p>
+							<p style="font-size: 0.6em;text-align: left;margin: 0;">1234567 → 1.2M</p>
+							<p style="font-size: 0.6em;text-align: left;margin: 0">1234567890 → 1,235M</p>
+						</div>
+					</div>
+					<div style="margin-top: 25px;">
+						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin: 0">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">
+								Hide scale <br> 'showScale: false'
+							</b>
+							<b style="display:block;font-weight: normal;font-size: 0.6em;margin-top: 10px">
+								Get the scale 'getScale'
+							</b>
+						</div>
+						<div style="width: 55%; display: inline-block;">
+						</div>
+					</div>
+				</section>
+				<section data-state="no-code">
 					<h3>Currency</h3>
+				</section>
+				<section id="currency" data-state="split-view number" data-example-url="number" data-example-url-param="formatOptions={style:'short',currencyCode:false}&number=1234567&type=Currency&currency=EUR">
+					<div>
+						<div style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin-top: 20px;">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">Number of decimals is chosen based on the currency</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block; font-size: 1.2em;">
+							<pre><code class="hljs" data-trim>
+var oFormat = NumberFormat.getCurrencyInstance({
+}, /*oLocale*/);
+oFormat.format(123.456, "EUR"); //"EUR 123.46"
+oFormat.format(123.456, "JPY"); //"JPY 123"
+							</code></pre>
+						</div>
+					</div>
+					<div style="margin-top: 10px;">
+						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin-top: 20px">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">
+								Currency Code vs. Symbol
+							</b>
+							</p>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block; font-size: 1.2em;">
+							<pre><code class="hljs" data-trim>
+var oFormat = NumberFormat.getCurrencyInstance({
+  currencyCode: false
+}, /*oLocale*/);
+oFormat.format(-123.456, "EUR"); //"€﻿-123.46"
+							</code></pre>
+						</div>
+					</div>
+					<div style="margin-top: 10px;">
+						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
+							<p style="text-align: right;margin-top: 20px">
+							<b style="display:block;font-weight: normal;font-size: 0.6em">
+								Currency with compact style
+							</b>
+						</div>
+						<div class="fragment" style="width: 55%; display: inline-block; font-size: 1.2em;">
+							<pre><code class="hljs" data-trim>
+var oFormat = NumberFormat.getCurrencyInstance({
+  style: "short",
+  currencyCode: false
+}, /*oLocale*/);
+oFormat.format(1234567, "EUR"); //"€1.2M"
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				<section id="more_info" data-state="no-code list-slide">
+					<h2>Additional Info:</h2>
+					<p class="fragment">Demo Page of <a href="https://openui5nightly.hana.ondemand.com/test-resources/sap/ui/core/DateFormat.html">DateFormat</a> and <a href="https://openui5nightly.hana.ondemand.com/test-resources/sap/ui/core/NumberFormat.html">NumberFormat</a></p>
+					<p class="fragment">Development Guide of <a href="https://openui5.hana.ondemand.com/#docs/guide/91f2eba36f4d1014b6dd926db0e91070.html">DateFormat</a> and <a href="https://openui5.hana.ondemand.com/#docs/guide/91f2f2866f4d1014b6dd926db0e91070.html">NumberFormat</a></p>
+					<p class="fragment">API Docs of <a href="https://openui5.hana.ondemand.com/#docs/api/symbols/sap.ui.core.format.DateFormat.html">DateFormat</a> and <a href="https://openui5.hana.ondemand.com/#docs/api/symbols/sap.ui.core.format.NumberFormat.html">NumberFormat</a></p>
+				</section>
+				<section id="Question" data-state="no-code list-slide">
+					<h2>Questions?</h2>
 				</section>
 			</div>
 		</div>
 		<div id="example_panel" class="example_panel">
 			<span id="openArrow" class="arrow"></span>
-			<iframe onload="window.scroll(0, 0)" id="example" width="800px" height="100%" src="http://veui5infra.dhcp.wdf.sap.corp:8080/uilib-sample/test-resources/sap/ui/core/DateFormat.html"></iframe>
+			<iframe id="example" width="800px" height="100%"></iframe>
 		</div>
 		<script src="https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js"></script>
 		<script src="js/reveal.js"></script>
 		<script>
+			var sExampleBaseURL = "http://localhost:8080/testsuite/test-resources/sap/ui/core/";
+
+			function setExampleURL(oEvent) {
+				var sURL = oEvent.target.getAttribute("data-url");
+				document.getElementById("example").setAttribute("src", sURL);
+			}
+
 			Reveal.addEventListener("slidechanged", function(oEvent) {
-				var sBaseURL = "http://veui5infra.dhcp.wdf.sap.corp:8080/uilib-sample/test-resources/sap/ui/core/DateFormat.html";
+				var sBaseDateURL = sExampleBaseURL + "DateFormat.html";
+				var sBaseNumberURL = sExampleBaseURL + "NumberFormat.html";
 				var sURLParam = oEvent.currentSlide.getAttribute("data-example-url-param");
-				if (sURLParam) {
-					document.getElementById("example").setAttribute("src", sBaseURL + "#" + sURLParam);
+				var bNumber = oEvent.currentSlide.getAttribute("data-example-url") === "number";
+				var sBaseURL = bNumber ? sBaseNumberURL : sBaseDateURL;
+				var sURL = sBaseURL + "#" + (sURLParam ? sURLParam : "");
+				var sState = oEvent.currentSlide.getAttribute("data-state");
+
+				var bNoCode = sState && (sState.indexOf("no-code") !== -1);
+
+				if (!bNoCode) {
+					document.getElementById("example").setAttribute("src", sURL);
+				}
+			});
+
+			Reveal.addEventListener("slidechanged", function(oEvent) {
+				if (oEvent.currentSlide.id === "style") {
+					var oNow = new Date();
+					sap.ui.require(["sap/ui/core/format/DateFormat"], function(Format) {
+						["short", "medium", "long", "full"].forEach(function(sStyle) {
+							var oFormat = Format.getInstance({
+								style: sStyle
+							});
+							document.getElementById("style_" + sStyle).innerHTML = oFormat.format(oNow);
+						});
+					});
+				}
+			});
+
+			Reveal.addEventListener("slidechanged", function(oEvent) {
+				if (oEvent.currentSlide.id === "format") {
+					var oNow = new Date();
+					sap.ui.require(["sap/ui/core/format/DateFormat", "sap/ui/core/Locale"], function(Format, Locale) {
+						["en_US", "de_DE", "zh_CN"].forEach(function(sLocale) {
+							["yMMM", "yQQQ"].forEach(function(sFormat) {
+								var oFormat = Format.getInstance({
+									format: sFormat
+								}, new Locale(sLocale));
+								document.getElementById((sLocale.substr(-2)+ "_" + sFormat).toLowerCase()).innerHTML = oFormat.format(oNow);
+							});
+
+						});
+					});
 				}
 			});
 
@@ -347,7 +598,7 @@ var oFormat = NumberFormat.getCurrencyInstance({
 				if (oEvent.currentSlide.id === "relative") {
 					var oNow = new Date();
 					sap.ui.require(["sap/ui/core/format/DateFormat", "sap/ui/core/Locale"], function(Format, Locale) {
-						window.relativeInterval = setInterval(function() {
+						var fnUpdate = function() {
 							var oEn = new Locale("en_US");
 							var oFormatEn = Format.getTimeInstance({
 								relative: true
@@ -368,7 +619,11 @@ var oFormat = NumberFormat.getCurrencyInstance({
 							}, oZh);
 							var sRelativeZh = oFormatZh.format(oNow);
 							document.getElementById("relative_cn").innerHTML = sRelativeZh;
-						}, 1000);
+						};
+
+						fnUpdate();
+
+						window.relativeInterval = setInterval(fnUpdate, 1000);
 					});
 				} else {
 					clearInterval(window.relativeInterval);
@@ -396,32 +651,21 @@ var oFormat = NumberFormat.getCurrencyInstance({
 			});
 
 			Reveal.addEventListener("slidechanged", function(oEvent) {
-				if (oEvent.currentSlide.id === "style") {
+				if (oEvent.currentSlide.id === "calendar_type") {
 					var oNow = new Date();
-					sap.ui.require(["sap/ui/core/format/DateFormat"], function(Format) {
-						["short", "medium", "long", "full"].forEach(function(sStyle) {
-							var oFormat = Format.getInstance({
-								style: sStyle
-							});
-							document.getElementById("style_" + sStyle).innerHTML = oFormat.format(oNow);
-						});
-					});
-				}
-			});
-
-			Reveal.addEventListener("slidechanged", function(oEvent) {
-				if (oEvent.currentSlide.id === "format") {
-					var oNow = new Date();
-					sap.ui.require(["sap/ui/core/format/DateFormat", "sap/ui/core/Locale"], function(Format, Locale) {
-						["en_US", "de_DE", "zh_CN"].forEach(function(sLocale) {
-							["yMMM", "yw"].forEach(function(sFormat) {
+					sap.ui.require(["sap/ui/core/format/DateFormat", "sap/ui/core/CalendarType"], function(Format, CalendarType) {
+						[CalendarType.Gregorian, CalendarType.Islamic, CalendarType.Japanese, CalendarType.Persian].forEach(function(sCalendarType) {
+							["medium", "long"].forEach(function(sStyle) {
 								var oFormat = Format.getInstance({
-									format: sFormat
-								}, new Locale(sLocale));
-								document.getElementById((sLocale.substr(-2)+ "_" + sFormat).toLowerCase()).innerHTML = oFormat.format(oNow);
-							});
+									style: sStyle,
+									calendarType: sCalendarType
+								});
 
-						});
+								var sFormat = oFormat.format(oNow);
+								var sId = sCalendarType.charAt(0).toLowerCase() + "_" + sStyle;
+								document.getElementById(sId).innerHTML = sFormat;
+							});
+						})
 					});
 				}
 			});

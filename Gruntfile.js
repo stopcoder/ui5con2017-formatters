@@ -53,14 +53,24 @@ module.exports = function(grunt) {
 					'copy'
 				]
 			}
+		},
+		connect: {
+			server: {
+				options: {
+					port:8081,
+					base: "dist"
+				}
+			}
 		}
 	});
 
 	// Load the plugin that provides the "uglify" task.
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Default task(s).
 	grunt.registerTask('default', ['copy']);
+	grunt.registerTask('serve', ['connect:server', 'watch']);
 
 };
