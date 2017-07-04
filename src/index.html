@@ -232,7 +232,7 @@ var oFormat = DateFormat.getDateTimeInstance({
 					<p class="fragment">parses number string with tolerance for manual user input.</p>
 				</section>
 				<section id="number_instance_title" data-state="no-code">
-					<h2>Create an instance of DateFormat</h2>
+					<h2>Create an instance of NumberFormat</h2>
 				</section>
 				<section id="number_instance" data-state="no-code split-view number">
 					<div>
@@ -441,8 +441,7 @@ var oFormat = NumberFormat.getCurrencyInstance({
 						<div class="fragment" style="width: 35%; display: inline-block; margin-right: 5%; vertical-align: top;">
 							<p style="text-align: right;margin: 0">
 							<b style="display:block;font-weight: normal;font-size: 0.6em">
-								<a onclick="setExampleURL(event)" data-url="http://veui5infra.dhcp.wdf.sap.corp:8080/snippix/snippets/52754.html">Fixed scale factor</a>
-								<a onclick="setExampleURL(event)" data-url="http://veui5infra.dhcp.wdf.sap.corp:8080/snippix/snippets/52754.html?sap-ui-formatLocale=zh_CN" style="font-size: 0.5em;">zh_CN</a>
+								Fixed scale factor
 							</b>
 							<b style="display:block;font-weight: normal;font-size: 0.6em">use 'shortRefNumber'</b>
 							</p>
@@ -529,7 +528,9 @@ oFormat.format(1234567, "EUR"); //"€1.2M"
 					<p class="fragment">API Docs of <a href="https://openui5.hana.ondemand.com/#docs/api/symbols/sap.ui.core.format.DateFormat.html">DateFormat</a> and <a href="https://openui5.hana.ondemand.com/#docs/api/symbols/sap.ui.core.format.NumberFormat.html">NumberFormat</a></p>
 				</section>
 				<section id="Question" data-state="no-code list-slide">
-					<h2>Questions?</h2>
+					<h2>Thank you.</h2>
+					<h2 style="margin-top: 40px">Questions?</h2>
+					<p style="width: 60%">You are welcome to give feedback for this session in the UI5con Event App</p>
 				</section>
 			</div>
 		</div>
@@ -540,7 +541,7 @@ oFormat.format(1234567, "EUR"); //"€1.2M"
 		<script src="https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js"></script>
 		<script src="js/reveal.js"></script>
 		<script>
-			var sExampleBaseURL = "http://localhost:8080/testsuite/test-resources/sap/ui/core/";
+			var sExampleBaseURL = "https://openui5nightly.hana.ondemand.com/test-resources/sap/ui/core/";
 
 			function setExampleURL(oEvent) {
 				var sURL = oEvent.target.getAttribute("data-url");
